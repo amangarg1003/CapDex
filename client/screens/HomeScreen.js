@@ -96,7 +96,7 @@ export default class HomeScreen extends React.Component {
             bottom: 0,
             paddingBottom: 8
           }}>
-            APP NAME
+            CapDex
             </Text>
           <TouchableOpacity style={{
             position: 'absolute',
@@ -114,7 +114,7 @@ export default class HomeScreen extends React.Component {
 
         </View>
         <View style={styles.calendarContainer}>
-          {}
+          
         </View>
       </View>
     );

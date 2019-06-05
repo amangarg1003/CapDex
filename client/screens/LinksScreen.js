@@ -82,7 +82,7 @@ export default class LinksScreen extends React.Component {
             bottom: 0,
             paddingBottom: 8
           }}>
-            APP NAME
+            CapDex
             </Text>
           <TouchableOpacity style={{
             position: 'absolute',
@@ -98,7 +98,7 @@ export default class LinksScreen extends React.Component {
             />
           </TouchableOpacity>
         </View>
-        {/* <View style={{
+        { <View style={{
           height: '5%',
           width: '100%',
           flexDirection: "row",
@@ -122,8 +122,8 @@ export default class LinksScreen extends React.Component {
               />
             </TouchableOpacity>
           </View>
-        </View> */}
-        {/* <View style={{
+        </View> }
+        { <View style={{
           flexDirection: "row",
           paddingLeft:10,
           paddingBottom:4
@@ -133,8 +133,8 @@ export default class LinksScreen extends React.Component {
             fontSize:20,
             color:'#b4b4b4'
           }}>(8)</Text>
-        </View> */}
-        {/* <ScrollView style={{
+        </View> }
+        { <ScrollView style={{
           backgroundColor:'#f4f4f4'
         }}>
           <FlatList
@@ -151,7 +151,7 @@ export default class LinksScreen extends React.Component {
             // renderItem={({ item }) => <Text style={styles.item}>{item.key}</Text>}
             renderItem={({item}) => this.renderItemComponent(item) }
           />
-        </ScrollView> */}
+        </ScrollView>}
       </View>
     );
   }
