@@ -15,6 +15,7 @@
     "axios": "^0.18.0",
     "expo": "^32.0.0",
     "googleapis": "^37.2.0",
+    "lodash": "^4.17.11",
     "react": "16.5.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
     "react-native-calendars": "^1.22.0",
@@ -23,7 +24,9 @@
     "react-native-elements": "^1.0.0",
     "react-native-material-cards": "^1.0.9",
     "react-native-qrcode-scanner": "^1.2.1",
-    "react-navigation": "^3.0.9"
+    "react-navigation": "^3.0.9",
+    "react-redux": "^7.0.3",
+    "redux": "^4.0.1"
   },
   "devDependencies": {
     "@expo/vector-icons": "^9.0.0",
