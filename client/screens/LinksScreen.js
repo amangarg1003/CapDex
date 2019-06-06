@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icon, ListItem } from 'react-native-elements'
+import { Icon, ListItem, Button } from 'react-native-elements'
 import { Agenda } from 'react-native-calendars'
 import { Card, CardTitle, CardContent, CardAction, CardButton, CardImage } from 'react-native-material-cards'
 import {
@@ -11,8 +11,15 @@ import {
   TouchableOpacity,
   View,
   FlatList,
+  // Button,
+  Alert,
+  TextInput,
 } from 'react-native';
 import { WebBrowser } from 'expo';
+import CountDown from 'react-native-countdown-component';
+// import MyView from './MyView';
+
+
 
 export default class LinksScreen extends React.Component {
   static navigationOptions = {
@@ -20,9 +27,23 @@ export default class LinksScreen extends React.Component {
     // title: 'Pending Invites',
   };
 
+  constructor() {
+    super();
+    this.state = {
+      timerDone: false,
+      displayConnectCard: false,
+    }
+  }
+
+  sleep(delay) {
+    var start = new Date().getTime();
+    while (new Date().getTime() < start + delay);
+  }
 
   renderItemComponent(item, firstItemInDay) {
 
+
+    // this.sleep(2000)
     return (<Card style={{
       backgroundColor: '#fbfbfb',
     }}>
@@ -31,37 +52,37 @@ export default class LinksScreen extends React.Component {
         subtitle="This is subtitle"
       />
       <CardContent>
+        <CountDown
+          until={3}
+          onFinish={() => this.setState({ timerDone: true })}
+          // onPress={() => alert('hello')}
+          size={20}
+        />
         <Text>{item.key}</Text>
       </CardContent>
       <CardAction
         separator={true}
         inColumn={false}
         style={{
-          padding:5,
+          padding: 5,
         }}>
-        <CardButton style={{
+        <Button type='outline' disabled={!this.state.timerDone} style={{
           flex: 1,
           flexDirection: "row",
           alignItems: 'center',
-          backgroundColor: '#15db92',
+          backgroundColor: 'grey',
+          marginRight: 7,
         }}
-          onPress={() => { }}
-          title="Push"
-          color="blue"
-        />
-        <CardButton style={{
-          flex: 1,
-          flexDirection: "row",
-          alignItems: 'center',
-          backgroundColor: '#15db92',
-          marginRight:7,
-        }}
-          onPress={() => { }}
-          title="Later"
-          color="blue"
+          onPress={() => { alert("LMAO") }}
+          title="Confirm Catch"
+          color="white"
         />
       </CardAction>
     </Card>)
+  }
+
+  _onPressButton() {
+    Alert.alert('You tapped the button!')
   }
 
   render() {
@@ -98,58 +119,75 @@ export default class LinksScreen extends React.Component {
             />
           </TouchableOpacity>
         </View>
-        { <View style={{
+        {<View style={{
           height: '5%',
           width: '100%',
           flexDirection: "row",
         }}>
           <View style={{
             flex: 1,
-            justifyContent: 'center',
-            paddingLeft:10,
+            // justifyContent: 'center',
+            paddingLeft: 10,
           }}>
-            <TouchableOpacity style={{
+            {/* <Button title="Catch" style={{
               flexDirection: "row",
+            }} onpress={() => {
+
+              Alert.alert('you pressed the catch button');
+            }}> */}
+            
+            <View style={{
+              flex: 1,
+              flexDirection: 'row',
+              paddingTop: 3,
+              paddingBottom: 3,
+
             }}>
-              <Text style={{ fontSize: 20, color:'#2d4150'}}>Invite</Text>
-              <Icon
+              <TextInput
+              style={{ 
+                height: 35,
+                borderColor: 'gray',
+                borderWidth: 1,
+                borderRadius: 5,
+                width: '60%',
+              }}
+              onChangeText={(text) => this.setState({ text })}
+              value={this.state.text}
+            />
+              <Button
+                style = {{
+                  paddingLeft: 5,
+                }}
+                onPress={this._onPressButton}
+                title="Catch"
+              />
+              {/* <Icon
                 name='md-add'
                 type='ionicon'
                 color='#007fff'
                 size={20}
-                paddingLeft={7}
-                paddingTop={4}
-              />
-            </TouchableOpacity>
+                paddingTop={8}
+              /> */}
+            </View>
           </View>
-        </View> }
-        { <View style={{
+        </View>}
+        {<View style={{
           flexDirection: "row",
-          paddingLeft:10,
-          paddingBottom:4
+          paddingLeft: 10,
+          paddingBottom: 4
         }}>
-          <Text style={{ fontSize: 20, color:'#2d4150'}}>Your Pending Invitations:</Text>
-          <Text style={{
-            fontSize:20,
-            color:'#b4b4b4'
-          }}>(8)</Text>
-        </View> }
-        { <ScrollView style={{
-          backgroundColor:'#f4f4f4'
+          <Text style={{ fontSize: 20, color: '#2d4150' }}>Your Pending Collegues:</Text>
+        </View>}
+        {<ScrollView style={{
+          backgroundColor: '#f4f4f4'
         }}>
           <FlatList
+
             data={[
-              { key: 'Devin' },
-              { key: 'Jackson' },
-              { key: 'James' },
-              { key: 'Joel' },
-              { key: 'John' },
-              { key: 'Jillian' },
-              { key: 'Jimmy' },
-              { key: 'Julie' },
+              { key: 'David Bennett' },
             ]}
             // renderItem={({ item }) => <Text style={styles.item}>{item.key}</Text>}
-            renderItem={({item}) => this.renderItemComponent(item) }
+            renderItem={({ item }) => this.renderItemComponent(item)}
           />
         </ScrollView>}
       </View>
