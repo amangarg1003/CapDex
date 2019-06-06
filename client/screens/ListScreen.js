@@ -23,7 +23,8 @@ export default class ListScreen extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {
+      console.disableYellowBox = true;
+      this.state = {
       people1: [],
       caught: []
     }

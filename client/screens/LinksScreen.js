@@ -34,7 +34,7 @@ export default class LinksScreen extends React.Component {
   constructor() {
     super();
     // this.pleasePress = this.pleasePress.bind(this)
-
+    console.disableYellowBox = true;
     this.state = {
       timerDone: false,
       displayConnectCard: false,
