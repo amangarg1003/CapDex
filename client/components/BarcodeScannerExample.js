@@ -50,8 +50,8 @@ export class BarcodeScannerExample extends React.Component {
     //verify the qr code matches the name
 
     //close the overlay
-    this.props.handler_verify(true);
-    // this.props.handler_overlay();
+    this.props.handler_verify(this.props.name==data);
+    this.props.handler_overlay();
 
     // the alert breaks it don't turn it on
     // alert(`Bar code with type ${type} and data ${data} has been scanned!`);

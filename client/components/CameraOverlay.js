@@ -17,58 +17,113 @@ export class CameraOverlay extends React.Component{
 
         this.state={
             isVisible: props.isVisible,
-            name: props.name,
+            // name: this.props.name,
+            name: "Rich Fairbank",
             num: "",
             correct: false,
             inputValue: '',
             // Default Value of the TextInput
             valueForQRCode: '',
             // Default value for the QR Code
-            verified: false
+            verified: false,
+            Pcaught: [],
+            id: -1
         }
     }
         
     handler_overlay() {
         this.setState({
             // isVisible: false,
-            verified: true
+            // verified: true
 
         })
     }
     
     handler_verify(caught) {
         this.setState({
-            correct: caught
+            // isVisible: false, //gotta make a separate button handler
+            correct: caught,
+            verified: true
+
         })
-        // if
-        // return fetch('https://80hj0816wb.execute-api.us-east-2.amazonaws.com/prod2/cae-manager', {
-        //     method: 'POST',
-        //     body: JSON.stringify({
-        //       operation: "query",
-        //       tableName: "People",
-        //       payload: {
-        //         value: "Alan Ward"
-        //       }
-        //     }),
-        //   }).then((response) => response.json())
-        //     .then((responseJson) => {
-        //       this.setState({
-        //         // Items: responseJson.Items,
-        //         Job_Title: responseJson.Items[0]["job_title"],
-        //         Person_id: responseJson.Items[0]["Person_id"],
-        //         Email: responseJson.Items[0]["email"],
-        //         Image_Url: responseJson.Items[0]["image_url"],
-        //         Person_Name: responseJson.Items[0]["Person_name"],
-        //         Count: responseJson.Count,
-        //         ScannedCount: responseJson.ScannedCount
-        //       }, function () {
+        caught=true
+        if(caught==true){
+            this.setState({
+                // isVisible: false,
+                verified: true
+    
+            })
+        // this.onSpecialSadButtonPress()        
+
+        let id = 0;
+        let Pcaught = []
+
+        fetch('https://80hj0816wb.execute-api.us-east-2.amazonaws.com/prod2/cae-manager', {
+            method: 'POST',
+            body: JSON.stringify({
+              operation: "query",
+              tableName: "People",
+              payload: {
+                value: "David Bennett"
+              }
+            }),
+          }).then((response) => response.json())
+            .then((responseJson) => {
+              
+                id= responseJson.Items[0].Person_id
+              
       
-        //       });
       
-        //     })
-        //     .catch((error) => {
-        //       console.error(error);
-        //     });
+            })
+            .catch((error) => {
+              console.error(error);
+            });
+        
+        fetch('https://80hj0816wb.execute-api.us-east-2.amazonaws.com/prod2/cae-manager', {
+            method: 'POST',
+            body: JSON.stringify({
+                "operation": "read",
+                "tableName": "Caught",
+                "payload": {
+                "Key": {
+                "Person_id": id
+                }
+                }
+                }),
+          }).then((response) => response.json())
+            .then((responseJson) => {
+              
+                Pcaught= responseJson.Pcaught
+              
+      
+      
+            })
+            .catch((error) => {
+              console.error(error);
+            });
+
+        Pcaught.push(id);
+
+        fetch('https://80hj0816wb.execute-api.us-east-2.amazonaws.com/prod2/cae-manager', {
+            method: 'POST',
+            body: JSON.stringify({
+                "operation": "update",
+                "tableName": "Caught",
+                "payload": {
+                "Key": {
+                "Person_id": id
+                },
+                "UpdateExpression": "set Pcaught = :val1",
+                "ExpressionAttributeValues": {
+                ":val1": Pcaught
+                }
+                }
+                }),
+          })
+            .catch((error) => {
+              console.error(error);
+            });
+    }
 
     }
 
@@ -126,6 +181,7 @@ export class CameraOverlay extends React.Component{
                     </View>
                 </View>
                 <BarcodeScannerExample 
+                    name = {this.state.name}
                     handler_overlay = {this.handler_overlay}
                     handler_verify = {this.handler_verify}
                 />

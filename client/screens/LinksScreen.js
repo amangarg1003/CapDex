@@ -222,6 +222,7 @@ export default class LinksScreen extends React.Component {
             renderItem={({item}) => this.renderItemComponent(item)}
           />
         </ScrollView>}
+        <View>{console.log(this.state.people[this.state.people.length-1])}</View>
         <CameraOverlay style={styles.overlay} isVisible={this.state.visible} name={this.state.people[this.state.people.length-1]}/>
 
       </View>
