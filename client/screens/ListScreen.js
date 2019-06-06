@@ -1,7 +1,6 @@
 import React from 'react';
 import { Icon, ListItem } from 'react-native-elements'
 import { Agenda } from 'react-native-calendars'
-import {Font} from 'expo'
 import { Card, CardTitle, CardContent, CardAction, CardButton, CardImage } from 'react-native-material-cards'
 import {
   Image,
@@ -32,9 +31,6 @@ export default class ListScreen extends React.Component {
   }
 
   componentDidMount() {
-      Font.loadAsync({
-          'eightbit': require('../assets/fonts/PressStart2P-Regular.ttf'),
-      });
       fetch('https://80hj0816wb.execute-api.us-east-2.amazonaws.com/prod2/cae-manager', {
         method: 'POST',
         body: JSON.stringify({

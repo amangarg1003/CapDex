@@ -16,6 +16,9 @@ export default class App extends React.Component {
   }
 
   async componentWillMount() {
+    Font.loadAsync({
+        'eightbit': require('./assets/fonts/PressStart2P-Regular.ttf'),
+    });
     const token = await AsyncStorage.getItem("token");
     if(token != null && token != "{}"){
       var fetchToken = 'https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=' + token;
@@ -35,7 +38,7 @@ export default class App extends React.Component {
   }
 
   loginSuccess = async (result) => {
-    await AsyncStorage.setItem("token", result.accessToken); 
+    await AsyncStorage.setItem("token", result.accessToken);
     this.setState({
       ...this.state,
       signedIn: true
