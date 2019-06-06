@@ -14,6 +14,10 @@ import {
   FlatList,
 } from 'react-native';
 import { WebBrowser } from 'expo';
+import {CameraOverlay} from '../components/CameraOverlay';
+import {BarcodeScannerExample} from '../components/BarcodeScannerExample';
+
+
 
 export default class SettingsScreen extends React.Component {
   static navigationOptions = {
@@ -25,25 +29,8 @@ export default class SettingsScreen extends React.Component {
      * content, we just wanted to give you a quick view of your config */
     return (
       <View style={styles.container}>
-        <View style={{
-          height: '15%',
-          width: '100%',
-          backgroundColor: '#15db92',
-          alignItems: "center",
-          justifyContent: 'center'
-        }}>
-          <Text style={{
-            fontWeight: 'bold',
-            color: "white",
-            fontSize: 50,
-            position: "absolute",
-            bottom: 0,
-            paddingBottom: 8
-          }}>
-            Meet-Ez
-            </Text>
-        </View>
-        <ExpoConfigView />
+        <CameraOverlay/>
+        {/* <BarcodeScannerExample/> */}
       </View>
       
     );
@@ -53,6 +40,7 @@ export default class SettingsScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    paddingTop: 15,
     backgroundColor: '#fff',
   },
 });
