@@ -33,11 +33,14 @@ export default class LinksScreen extends React.Component {
 
   constructor() {
     super();
+    // this.pleasePress = this.pleasePress.bind(this)
+
     this.state = {
       timerDone: false,
       displayConnectCard: false,
       visible: false
     }
+
   }
 
   sleep(delay) {
@@ -49,6 +52,12 @@ export default class LinksScreen extends React.Component {
     this.setState({
       text: this.state.mimin
     });
+  }
+
+  pleasePress = () => {
+      this.setState({
+        visible: true
+    })
   }
 
   renderItemComponent(item, firstItemInDay) {
@@ -84,14 +93,11 @@ export default class LinksScreen extends React.Component {
           backgroundColor: 'grey',
           marginRight: 7,
         }}
-          onPress={() => { 
-            this.setState({
-              visible: true
-            })
+          onPress={this.pleasePress}
             // console.log(this.state.visible)
             // alert("LMAO") 
-            }
-          }
+            
+          
           title="Confirm Catch"
           color="white"
         />
@@ -208,7 +214,7 @@ export default class LinksScreen extends React.Component {
             renderItem={({ item }) => this.renderItemComponent(item)}
           />
         </ScrollView>}
-        <CameraOverlay isVisible={this.state.visible}/>
+        <CameraOverlay style={styles.overlay} isVisible={this.state.visible}/>
 
       </View>
     );
@@ -220,4 +226,8 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
   },
+  overlay: {
+    marginTop: 50,
+    paddingTop: "50px"
+  }
 });

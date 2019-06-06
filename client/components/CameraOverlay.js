@@ -87,7 +87,9 @@ const styles = StyleSheet.create({
       paddingTop: 15,
     },
     modal: {
-        position: "absolute"
+        position: "absolute",
+        paddingTop: 100,
+        marginTop: 100
     },
     button:{
         marginTop: 300
