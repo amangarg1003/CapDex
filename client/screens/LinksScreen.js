@@ -19,6 +19,10 @@ import { WebBrowser } from 'expo';
 import CountDown from 'react-native-countdown-component';
 // import MyView from './MyView';
 
+import {CameraOverlay} from '../components/CameraOverlay';
+// import {ReactOverlay} from '../components/CameraOverlay';
+
+
 
 
 export default class LinksScreen extends React.Component {
@@ -32,12 +36,19 @@ export default class LinksScreen extends React.Component {
     this.state = {
       timerDone: false,
       displayConnectCard: false,
+      visible: false
     }
   }
 
   sleep(delay) {
     var start = new Date().getTime();
     while (new Date().getTime() < start + delay);
+  }
+
+  onButtonPress = () => {
+    this.setState({
+      text: this.state.mimin
+    });
   }
 
   renderItemComponent(item, firstItemInDay) {
@@ -73,7 +84,14 @@ export default class LinksScreen extends React.Component {
           backgroundColor: 'grey',
           marginRight: 7,
         }}
-          onPress={() => { alert("LMAO") }}
+          onPress={() => { 
+            this.setState({
+              visible: true
+            })
+            // console.log(this.state.visible)
+            // alert("LMAO") 
+            }
+          }
           title="Confirm Catch"
           color="white"
         />
@@ -190,6 +208,8 @@ export default class LinksScreen extends React.Component {
             renderItem={({ item }) => this.renderItemComponent(item)}
           />
         </ScrollView>}
+        <CameraOverlay isVisible={this.state.visible}/>
+
       </View>
     );
   }

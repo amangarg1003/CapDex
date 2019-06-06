@@ -1,5 +1,5 @@
 import React from 'react';
-import {Modal} from 'react-native';
+import {ModalDropdown} from 'react-native';
 import {Button, Overlay } from 'react-native-elements';
 import {BarcodeScannerExample} from '../components/BarcodeScannerExample';
 import QRCode from 'react-native-qrcode';
@@ -47,34 +47,57 @@ export class CameraOverlay extends React.Component{
         return (
           <View >
           <Button
-            title="Scan QR Code after a conversation!"
-            onPress={this.onSpecialButtonPress} 
+            title="solid button"
+            onPress={this.onButtonPress} 
             style={styles.button}
           />
-            <Overlay
-                isVisible={this.state.isVisible}
-                onBackdropPress={() => this.setState({ isVisible: false })}
-                style={styles.modal}
-                transparent={true}
-                // backgroundColor="purple"
+            < <ModalDropdown
+              style={{ marginLeft: 50 }}
+              ref={el => this._dropdown_5 = el}
+              defaultValue=''
+              dropdownStyle={{
+                borderRadius: 6,
+                backgroundColor: "#26344a",
+                shadowColor: "rgba(0, 0, 0, 0.2)",
+                shadowOffset: {
+                  width: 0,
+                  height: 5
+                },
+                shadowRadius: 20,
+                shadowOpacity: 1,
+                padding: 8
+              }}
+              dropdownTextStyle={{
+                fontFamily: "poppins-500",
+                fontSize: 16,
+                fontStyle: "normal",
+                letterSpacing: 0,
+                textAlign: "left",
+                color: "#ffffff",
+                backgroundColor: "#26344a"
+              }}
+              options={['H1', `H2`, 'H3']}
+              onDropdownWillShow={this._dropdown_5_willShow.bind(this)}
+
+            />
             >
                 <QRCode
                     value={this.state.valueForQRCode}
                     //Setting the value of QRCode
-                    size={250}
+                    size={100}
                     //Size of QRCode
                     bgColor="#000"
                     //Backgroun Color of QRCode
                     fgColor="#fff"
                     //Front Color of QRCode
                 />
-                <Text>^ Your Code ^  v Scan your new friend v</Text>
+                <Text>Hello from Overlay!</Text>
                 <BarcodeScannerExample 
                     handler_overlay = {this.handler_overlay}
                     handler_verify = {this.handler_verify}
                 />
 
-            </Overlay>
+            </ModalDropdown>
           </View>
         );
       

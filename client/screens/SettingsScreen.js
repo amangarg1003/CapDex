@@ -29,7 +29,7 @@ export default class SettingsScreen extends React.Component {
      * content, we just wanted to give you a quick view of your config */
     return (
       <View style={styles.container}>
-        <CameraOverlay/>
+        <CameraOverlay isVisible={false} />
         {/* <BarcodeScannerExample/> */}
       </View>
       
