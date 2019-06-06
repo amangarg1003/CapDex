@@ -4,7 +4,10 @@ import { AppLoading, Asset, Font, Icon } from 'expo';
 import AppNavigator from './navigation/AppNavigator';
 import LogIn from './components/LogIn';
 import axios from 'axios';
+import { Provider as ReduxProvider } from "react-redux";
+import configureStore from "./modules/store";
 
+const reduxStore = configureStore({});
 
 export default class App extends React.Component {
   constructor(props){
@@ -60,10 +63,12 @@ export default class App extends React.Component {
       )
     } else {
       return (
-        <View style={styles.container}>
-          {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-          <AppNavigator />
-        </View>
+        <ReduxProvider store={reduxStore}>
+          <View style={styles.container}>
+            {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
+            <AppNavigator />
+          </View>
+        </ReduxProvider>
       );
     }
   }
