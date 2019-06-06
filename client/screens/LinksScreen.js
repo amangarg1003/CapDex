@@ -38,7 +38,9 @@ export default class LinksScreen extends React.Component {
     this.state = {
       timerDone: false,
       displayConnectCard: false,
-      visible: false
+      visible: false,
+      currName: "TempName",
+      people: [],
     }
 
   }
@@ -62,8 +64,9 @@ export default class LinksScreen extends React.Component {
 
   renderItemComponent(item, firstItemInDay) {
 
-
-    // this.sleep(2000)
+    if(!this.state.displayConnectCard || !this.state.people.includes(item.key)){
+      return null;
+    }
     return (<Card style={{
       backgroundColor: '#fbfbfb',
     }}>
@@ -73,11 +76,12 @@ export default class LinksScreen extends React.Component {
       />
       <CardContent>
         <CountDown
-          until={3}
+          until={10}
           onFinish={() => this.setState({ timerDone: true })}
           // onPress={() => alert('hello')}
           size={20}
         />
+        {/* <Text>{this.state.displayConnectCard}</Text> */}
         <Text>{item.key}</Text>
       </CardContent>
       <CardAction
@@ -106,7 +110,8 @@ export default class LinksScreen extends React.Component {
   }
 
   _onPressButton() {
-    Alert.alert('You tapped the button!')
+    // Alert.alert('You tapped the button!')
+    
   }
 
   render() {
@@ -175,14 +180,14 @@ export default class LinksScreen extends React.Component {
                 borderRadius: 5,
                 width: '60%',
               }}
-              onChangeText={(text) => this.setState({ text })}
+              onChangeText={(text) => this.setState({currName: text })}
               value={this.state.text}
             />
               <Button
                 style = {{
                   paddingLeft: 5,
                 }}
-                onPress={this._onPressButton}
+                onPress={() => this.setState({displayConnectCard: this.state.people.push(this.state.currName)})}
                 title="Catch"
               />
               {/* <Icon
@@ -208,13 +213,16 @@ export default class LinksScreen extends React.Component {
           <FlatList
 
             data={[
-              { key: 'David Bennett' },
+              { key: 'David Bennett'},
+              { key: 'Aman Garg'},
+              { Key: 'Bob Whatshisface'},
+              { Key: 'Rich Fairbank'}
             ]}
             // renderItem={({ item }) => <Text style={styles.item}>{item.key}</Text>}
-            renderItem={({ item }) => this.renderItemComponent(item)}
+            renderItem={({item}) => this.renderItemComponent(item)}
           />
         </ScrollView>}
-        <CameraOverlay style={styles.overlay} isVisible={this.state.visible}/>
+        <CameraOverlay style={styles.overlay} isVisible={this.state.visible} gone={true} name={this.state.people[this.people.length-1]}/>
 
       </View>
     );

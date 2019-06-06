@@ -22,7 +22,7 @@ export class CameraOverlay extends React.Component{
             correct: false,
             inputValue: '',
             // Default Value of the TextInput
-            valueForQRCode: 'Anirudh',
+            valueForQRCode: '',
             // Default value for the QR Code
         }
     }
@@ -43,6 +43,10 @@ export class CameraOverlay extends React.Component{
         isVisible: true
     })
 
+    onSpecialSadButtonPress = ()=>this.setState({
+        isVisible: false
+    })
+
     render() {
         return (
           <View >
@@ -56,7 +60,8 @@ export class CameraOverlay extends React.Component{
                 onBackdropPress={() => this.setState({ isVisible: false })}
                 style={styles.modal}
                 transparent={true}
-                // backgroundColor="purple"
+                overlayBackgroundColor="red"
+                // windowBackgroundColor="red"
             >
                 <QRCode
                     value={this.state.valueForQRCode}
@@ -69,6 +74,23 @@ export class CameraOverlay extends React.Component{
                     //Front Color of QRCode
                 />
                 <Text>^ Your Code ^  v Scan your new friend v</Text>
+                <View style={{flexDirection:"row"}}>
+                    <View style={{flex:1}}>
+                    <Button
+                        title="X"
+                        onPress={this.onSpecialSadButtonPress} 
+                        style={styles.button_in}
+                    />
+                    </View>
+                    <View style={{flex:1}}>
+                    <Button
+                        title="Verified"
+                        disabled={true}
+                        onPress={this.handler_verify} 
+                        style={styles.button_in}
+                    />
+                    </View>
+                </View>
                 <BarcodeScannerExample 
                     handler_overlay = {this.handler_overlay}
                     handler_verify = {this.handler_verify}
@@ -87,12 +109,16 @@ const styles = StyleSheet.create({
       paddingTop: 15,
     },
     modal: {
-        position: "absolute",
-        paddingTop: 100,
-        marginTop: 100
+        // position: "absolute",
+        paddingTop: 50,
+        marginTop: 50,
+        backgroundColor: "red"
     },
     button:{
         marginTop: 300
-    }
+    },
+    button_in:{
+        marginTop: 10
+    },
   });
   
