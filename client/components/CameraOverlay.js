@@ -17,19 +17,22 @@ export class CameraOverlay extends React.Component{
 
         this.state={
             isVisible: props.isVisible,
-            name: "",
+            name: props.name,
             num: "",
             correct: false,
             inputValue: '',
             // Default Value of the TextInput
             valueForQRCode: '',
             // Default value for the QR Code
+            verified: false
         }
     }
         
     handler_overlay() {
         this.setState({
-            isVisible: false,
+            // isVisible: false,
+            verified: true
+
         })
     }
     
@@ -37,6 +40,36 @@ export class CameraOverlay extends React.Component{
         this.setState({
             correct: caught
         })
+        // if
+        // return fetch('https://80hj0816wb.execute-api.us-east-2.amazonaws.com/prod2/cae-manager', {
+        //     method: 'POST',
+        //     body: JSON.stringify({
+        //       operation: "query",
+        //       tableName: "People",
+        //       payload: {
+        //         value: "Alan Ward"
+        //       }
+        //     }),
+        //   }).then((response) => response.json())
+        //     .then((responseJson) => {
+        //       this.setState({
+        //         // Items: responseJson.Items,
+        //         Job_Title: responseJson.Items[0]["job_title"],
+        //         Person_id: responseJson.Items[0]["Person_id"],
+        //         Email: responseJson.Items[0]["email"],
+        //         Image_Url: responseJson.Items[0]["image_url"],
+        //         Person_Name: responseJson.Items[0]["Person_name"],
+        //         Count: responseJson.Count,
+        //         ScannedCount: responseJson.ScannedCount
+        //       }, function () {
+      
+        //       });
+      
+        //     })
+        //     .catch((error) => {
+        //       console.error(error);
+        //     });
+
     }
 
     onSpecialButtonPress = ()=>this.setState({
@@ -74,6 +107,7 @@ export class CameraOverlay extends React.Component{
                     //Front Color of QRCode
                 />
                 <Text>^ Your Code ^  v Scan your new friend v</Text>
+                <Text>{this.state.name}</Text>
                 <View style={{flexDirection:"row"}}>
                     <View style={{flex:1}}>
                     <Button
@@ -85,7 +119,7 @@ export class CameraOverlay extends React.Component{
                     <View style={{flex:1}}>
                     <Button
                         title="Verified"
-                        disabled={true}
+                        disabled={!this.state.verified}
                         onPress={this.handler_verify} 
                         style={styles.button_in}
                     />
