@@ -53,14 +53,14 @@ export class CameraOverlay extends React.Component{
           <Button
             title="Scan QR Code after a conversation!"
             onPress={this.onSpecialButtonPress} 
-            style={styles.button}
+            style={styles.fixed_button}
           />
             <Overlay
                 isVisible={this.state.isVisible}
                 onBackdropPress={() => this.setState({ isVisible: false })}
                 style={styles.modal}
                 transparent={true}
-                overlayBackgroundColor="red"
+                // overlayBackgroundColor="red"
                 // windowBackgroundColor="red"
             >
                 <QRCode
@@ -120,5 +120,8 @@ const styles = StyleSheet.create({
     button_in:{
         marginTop: 10
     },
+    fixed_button:{
+        // position: 'absolute'
+    }
   });
   
