@@ -30,14 +30,52 @@ export default class HomeScreen extends React.Component {
           '2012-05-24': [],
           '2012-05-25': [{ text: 'item 3 - any js object' }, { text: 'any js object' }],
         }],
-      selected: '2019-02-16'
+      selected: '2019-02-16',
+      Job_Title: "",
+      Person_id: -1,
+      Email: "",
+      Image_Url: "",
+      Person_Name: "",
+      Count: 1,
+      ScannedCount: 1
     }
   }
+  componentDidMount() {
+    return fetch('https://80hj0816wb.execute-api.us-east-2.amazonaws.com/prod2/cae-manager', {
+      method: 'POST',
+      body: JSON.stringify({
+        operation: "query",
+        tableName: "People",
+        payload: {
+          value: "Alan Ward"
+        }
+      }),
+    }).then((response) => response.json())
+      .then((responseJson) => {
+        this.setState({
+          // Items: responseJson.Items,
+          Job_Title: responseJson.Items[0]["job_title"],
+          Person_id: responseJson.Items[0]["Person_id"],
+          Email: responseJson.Items[0]["email"],
+          Image_Url: responseJson.Items[0]["image_url"],
+          Person_Name: responseJson.Items[0]["Person_name"],
+          Count: responseJson.Count,
+          ScannedCount: responseJson.ScannedCount
+        }, function () {
+
+        });
+
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+
 
 
   renderItemComponent(item, firstItemInDay) {
 
-    return( <Card style={{
+    return (<Card style={{
       backgroundColor: '#fbfbfb',
     }}>
       <CardTitle
@@ -51,13 +89,13 @@ export default class HomeScreen extends React.Component {
         separator={true}
         inColumn={false}
         style={{
-          padding:5,
+          padding: 5,
         }}>
         <CardButton style={{
           flex: 1,
           alignItems: 'center',
           backgroundColor: '#15db92',
-          width:'30%',
+          width: '30%',
         }}
           onPress={() => { }}
           title="Push"
@@ -67,15 +105,15 @@ export default class HomeScreen extends React.Component {
           flex: 1,
           alignItems: 'center',
           backgroundColor: '#15db92',
-          width:'30%',
-          marginRight:7,
+          width: '30%',
+          marginRight: 7,
         }}
           onPress={() => { }}
           title="Later"
           color="blue"
         />
       </CardAction>
-    </Card> )
+    </Card>)
   }
 
   render() {
@@ -114,7 +152,22 @@ export default class HomeScreen extends React.Component {
 
         </View>
         <View style={styles.calendarContainer}>
-          
+          <View style={styles.container}>
+            <View style={styles.header}>
+              <View style={styles.profpicwrap}>
+                <Image style={styles.profpic} source={{uri: this.state.Image_Url}} />
+              </View>
+
+            </View>
+            <View style={styles.about}>
+              <Text style={styles.name}>{this.state.Person_Name}</Text>
+              <Text style={styles.pos}>{this.state.Job_Title}</Text>
+              <Text></Text>
+              <Text style={styles.fact}>Lives under the sea</Text>
+              <Text style={styles.fact}>Under constant danger of being eaten by a sunflower starfish</Text>
+              <Text style={styles.fact}>Skeletons of his kind wash up on shore regularly</Text>
+            </View>
+          </View>
         </View>
       </View>
     );
@@ -237,5 +290,28 @@ const styles = StyleSheet.create({
   helpLinkText: {
     fontSize: 14,
     color: '#2e78b7',
+  },
+  profpic: {
+    width: 300,
+    height: 300,
+    borderRadius: 150,
+    borderColor: '#fff',
+    borderWidth: 4,
+  },
+  profpicwrap: {
+    width: '80%',
+    height: '50%',
+    borderRadius: 100,
+    // backgroundColor: "orange"
+  },
+  name: {
+    fontSize: 16,
+    fontWeight: 'bold'
+  },
+  pos: {
+    fontSize: 14,
+    fontWeight: '300',
+    fontStyle: 'italic',
+
   },
 });
