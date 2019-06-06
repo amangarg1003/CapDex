@@ -33,7 +33,7 @@ export default class LogIn extends React.Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text style={styles.header}>M</Text>
+                <Text style={styles.header}>C</Text>
                 <View style={styles.buttonContainer}>
                     <Button
                         title="Login"
@@ -51,14 +51,14 @@ export default class LogIn extends React.Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#fff",
+        backgroundColor: "#004977",
         alignItems: "center",
         justifyContent: "center"
     },
     header: {
         fontSize: 150,
         fontWeight: 'bold',
-        color: '#15db92'
+        color: '#fff'
     },
     buttonContainer: {
         width: 100,
