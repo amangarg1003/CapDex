@@ -22,6 +22,7 @@ export default class HomeScreen extends React.Component {
 
   constructor(props) {
     super(props);
+    console.disableYellowBox = true;
     this.state = {
       items: [
         {

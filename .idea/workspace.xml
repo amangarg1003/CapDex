@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="f40d477e-67eb-4af1-a11d-cef3c0f2540c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/client/screens/HomeScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/screens/HomeScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/screens/LinksScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/screens/LinksScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/screens/ListScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/screens/ListScreen.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -44,8 +42,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/client/screens/HomeScreen.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="292">
-              <caret line="287" column="24" lean-forward="true" selection-start-line="287" selection-start-column="24" selection-end-line="287" selection-end-column="24" />
+            <state relative-caret-position="216">
+              <caret line="24" column="36" selection-start-line="24" selection-start-column="36" selection-end-line="24" selection-end-column="36" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -127,8 +125,8 @@
         <option value="$PROJECT_DIR$/client/navigation/MainTabNavigator.js" />
         <option value="$PROJECT_DIR$/client/package.json" />
         <option value="$PROJECT_DIR$/client/screens/ListScreen.js" />
-        <option value="$PROJECT_DIR$/client/screens/HomeScreen.js" />
         <option value="$PROJECT_DIR$/client/screens/LinksScreen.js" />
+        <option value="$PROJECT_DIR$/client/screens/HomeScreen.js" />
       </list>
     </option>
   </component>
@@ -258,15 +256,16 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1559771299080</updated>
-      <workItem from="1559771300653" duration="25665000" />
+      <workItem from="1559771300653" duration="25764000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25665000" />
+    <option name="totallyTimeSpent" value="25764000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24983476" />
@@ -378,8 +377,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/client/screens/HomeScreen.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="292">
-          <caret line="287" column="24" lean-forward="true" selection-start-line="287" selection-start-column="24" selection-end-line="287" selection-end-column="24" />
+        <state relative-caret-position="216">
+          <caret line="24" column="36" selection-start-line="24" selection-start-column="36" selection-end-line="24" selection-end-column="36" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
