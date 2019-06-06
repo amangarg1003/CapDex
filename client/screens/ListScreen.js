@@ -23,7 +23,8 @@ export default class ListScreen extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {
+      console.disableYellowBox = true;
+      this.state = {
       people1: [],
       caught: []
     }
@@ -74,7 +75,7 @@ export default class ListScreen extends React.Component {
         <View style={{
           height: '15%',
           width: '100%',
-          backgroundColor: '#15db92',
+          backgroundColor: '#004977',
           alignItems: "center",
           justifyContent: 'center'
         }}>
@@ -135,7 +136,7 @@ export default class ListScreen extends React.Component {
                     flex: 1,
                     flexDirection: "row",
                     alignItems: 'center',
-                    backgroundColor: '#15db92',
+                    backgroundColor: '#004977',
                   }}
                               onPress={() => {
                                 Linking.openURL("mailto:" + personinfo.email);
@@ -171,6 +172,6 @@ export default class ListScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#15db92',
+    backgroundColor: '#004977',
   },
 });

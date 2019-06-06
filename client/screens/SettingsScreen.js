@@ -24,6 +24,11 @@ export default class SettingsScreen extends React.Component {
     header: null,
   };
 
+  constructor(props) {
+    super(props);
+    console.disableYellowBox = true;
+  }
+
   render() {
     /* Go ahead and delete ExpoConfigView and replace it with your
      * content, we just wanted to give you a quick view of your config */

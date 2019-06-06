@@ -34,7 +34,7 @@ export default class LinksScreen extends React.Component {
   constructor() {
     super();
     // this.pleasePress = this.pleasePress.bind(this)
-
+    console.disableYellowBox = true;
     this.state = {
       timerDone: false,
       displayConnectCard: false,
@@ -120,7 +120,7 @@ export default class LinksScreen extends React.Component {
         <View style={{
           height: '15%',
           width: '100%',
-          backgroundColor: '#15db92',
+          backgroundColor: '#004977',
           alignItems: "center",
           justifyContent: 'center'
         }}>
