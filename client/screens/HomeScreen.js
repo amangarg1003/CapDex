@@ -94,7 +94,7 @@ export default class HomeScreen extends React.Component {
         <CardButton style={{
           flex: 1,
           alignItems: 'center',
-          backgroundColor: '#15db92',
+          backgroundColor: '#004977',
           width: '30%',
         }}
           onPress={() => { }}
@@ -104,7 +104,7 @@ export default class HomeScreen extends React.Component {
         <CardButton style={{
           flex: 1,
           alignItems: 'center',
-          backgroundColor: '#15db92',
+          backgroundColor: '#004977',
           width: '30%',
           marginRight: 7,
         }}
@@ -122,7 +122,7 @@ export default class HomeScreen extends React.Component {
         <View style={{
           height: '15%',
           width: '100%',
-          backgroundColor: '#15db92',
+          backgroundColor: '#004977',
           alignItems: "center",
           justifyContent: 'center'
         }}>
